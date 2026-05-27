@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Spark ✨</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+  <!-- SVG Background Blobs -->
+  <div class="bg-shapes" aria-hidden="true">
+    <svg class="blob blob-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M44.7,-76.4C58.9,-69.2,71.9,-59.1,79.4,-45.8C86.9,-32.5,89,-16.2,87.5,-0.9C85.9,14.5,80.7,29,72.9,42.2C65.1,55.3,54.8,67.2,41.9,74.3C29,81.4,14.5,83.7,0.2,83.4C-14.1,83.1,-28.2,80.2,-40.9,73.4C-53.7,66.6,-65.1,55.9,-72.4,42.8C-79.7,29.8,-82.8,14.9,-83,0C-83.2,-14.9,-80.4,-29.7,-74,-42.7C-67.6,-55.7,-57.5,-66.8,-44.8,-74.2C-32.1,-81.6,-16,-85.3,-0.5,-84.6C15.1,-83.9,30.5,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+    </svg>
+    <svg class="blob blob-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M39.5,-67.8C51.1,-60.4,60.5,-50.2,68.1,-38.1C75.6,-26,81.4,-13,81.8,0.2C82.2,13.4,77.3,26.9,69.7,38.8C62.2,50.8,52,61.3,39.8,68.2C27.5,75.1,13.8,78.3,0.3,77.8C-13.1,77.3,-26.3,73,-38.3,66.1C-50.4,59.2,-61.4,49.7,-68.8,37.7C-76.2,25.7,-80.1,12.8,-79.5,0.3C-78.9,-12.2,-73.8,-24.3,-66.4,-35C-59,-45.7,-49.2,-55,-38,-61.7C-26.8,-68.3,-13.4,-72.4,0.2,-72.7C13.8,-73,27.9,-75.2,39.5,-67.8Z" transform="translate(100 100)" />
+    </svg>
+    <svg class="blob blob-3" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M47.7,-80.3C61.5,-72.1,72.4,-59.4,78.5,-45C84.6,-30.7,86.1,-15.3,85.3,-0.5C84.5,14.4,81.4,28.8,74.8,41.4C68.1,54.1,58,65,45.8,72.5C33.6,80,16.8,84.1,1.1,82.3C-14.5,80.5,-29,72.8,-41.3,63.4C-53.5,54,-63.5,42.9,-70.4,29.7C-77.3,16.6,-81.2,1.4,-80.1,-13.5C-79,-28.4,-72.9,-43,-63.3,-54.4C-53.7,-65.8,-40.5,-74,-26.9,-78.7C-13.3,-83.4,0.7,-84.6,14.7,-83.1C28.8,-81.6,33.9,-88.4,47.7,-80.3Z" transform="translate(100 100)" />
+    </svg>
+    <!-- Vector decorative stars/dots -->
+    <svg class="deco star-1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="20,2 24,15 38,15 27,23 31,37 20,29 9,37 13,23 2,15 16,15" />
+    </svg>
+    <svg class="deco star-2" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="15" cy="15" r="6"/>
+      <circle cx="15" cy="4" r="3"/>
+      <circle cx="15" cy="26" r="3"/>
+      <circle cx="4" cy="15" r="3"/>
+      <circle cx="26" cy="15" r="3"/>
+    </svg>
+    <svg class="deco zigzag" viewBox="0 0 80 20" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="0,15 10,5 20,15 30,5 40,15 50,5 60,15 70,5 80,15" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <svg class="deco triangle-1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="20,4 38,36 2,36"/>
+    </svg>
+    <svg class="deco donut-1" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="25" cy="25" r="20" fill="none" stroke-width="6"/>
+    </svg>
+  </div>
+
+  <main class="container">
+    <header class="hero">
+      <div class="badge">✨ AI-Powered</div>
+      <h1 class="title">Blog<span class="accent">Spark</span></h1>
+      <p class="subtitle">Type a topic and watch magic happen</p>
+    </header>
+
+    <section class="input-card">
+      <div class="input-group">
+        <label for="topic-input" class="input-label">What's your blog about?</label>
+        <textarea id="topic-input" class="topic-input" placeholder="e.g. The joy of slow mornings with coffee and books..." rows="3"></textarea>
+      </div>
+      <button id="generate-btn" class="generate-btn" onclick="generateBlog()">
+        <span class="btn-icon">🚀</span>
+        <span class="btn-text">Generate Blog</span>
+      </button>
+    </section>
+
+    <!-- Loading State -->
+    <div id="loader" class="loader hidden" aria-live="polite" aria-label="Generating your blog">
+      <div class="loader-visual">
+        <div class="pen-wrap">
+          <svg class="pen-svg" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="5" width="20" height="55" rx="4" class="pen-body"/>
+            <polygon points="20,60 40,60 30,75" class="pen-tip"/>
+            <rect x="20" y="52" width="20" height="6" class="pen-band"/>
+            <rect x="24" y="12" width="3" height="35" rx="1.5" class="pen-stripe"/>
+          </svg>
+        </div>
+        <div class="loader-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <p class="loader-text">Crafting your blog<span class="ellipsis"></span></p>
+    </div>
+
+    <!-- Result Card -->
+    <article id="result-card" class="result-card hidden">
+      <div class="result-header">
+        <div class="result-tag">✍️ Your Blog</div>
+        <button class="copy-btn" onclick="copyContent()" title="Copy content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+      <h2 id="blog-title" class="blog-title"></h2>
+      <div id="blog-content" class="blog-content"></div>
+    </article>
+
+    <!-- Error State -->
+    <div id="error-card" class="error-card hidden">
+      <span class="error-icon">😬</span>
+      <p id="error-msg" class="error-msg"></p>
+      <button class="retry-btn" onclick="resetState()">Try Again</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

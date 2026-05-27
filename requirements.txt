@@ -1,0 +1,9 @@
+langchain
+langgraph
+langchain_core
+langchain_community
+langchain_google_genai
+langchain_cli[inmem]
+fastapi
+uvicorn
+watchdog
