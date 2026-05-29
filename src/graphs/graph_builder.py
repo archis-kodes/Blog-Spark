@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph, START, END
-from src.llms.gemini_llm import GeminiLLM
+from src.llms.groq_llm import GroqLLM
 from src.states.blogstate import BlogState
 from src.nodes.blog_node import BlogNode
 
@@ -17,11 +17,13 @@ class GraphBuilder:
         # Nodes
         self.graph.add_node("title_creation", self.blog_node_object.title_creation)
         self.graph.add_node("content_generation", self.blog_node_object.content_generation)
+        self.graph.add_node("fetch_images", self.blog_node_object.fetch_images)
 
         # Edges
         self.graph.add_edge(START, "title_creation")
         self.graph.add_edge("title_creation", "content_generation")
-        self.graph.add_edge("content_generation", END)
+        self.graph.add_edge("content_generation", "fetch_images")
+        self.graph.add_edge("fetch_images", END) 
 
         return self.graph
     

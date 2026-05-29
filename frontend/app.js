@@ -46,8 +46,8 @@ async function generateBlog() {
     const json = await response.json();
 
     // Safely extract title and content
-    const title   = json?.data?.blog?.title   || 'Untitled Blog';
-    const content = json?.data?.blog?.content || '_No content returned._';
+    const title   = json?.data?.title   || 'Untitled Blog';
+    const content = json?.data?.content || '_No content returned._';
 
     showResult(title, content);
 
